@@ -5,12 +5,168 @@
     android:id="@+id/registration1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/transparent"
     tools:context=".ui.registration.Registration1Fragment">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"></LinearLayout>
+    <TextView
+        android:id="@+id/reg1_tw1"
+        style="@style/reg_text_orange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layoutDirection="rtl"
+        android:text="@string/reg1_text_line1_1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.10" />
+
+    <TextView
+        android:id="@+id/reg1_tw2"
+        style="@style/reg_text_orange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:layoutDirection="rtl"
+        android:text="@string/reg1_text_line2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reg1_tw1"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/reg1_tw3"
+        style="@style/reg_text_orange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:layoutDirection="rtl"
+        android:text="@string/reg1_text_line3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reg1_tw2"
+        app:layout_constraintVertical_bias="0.07" />
+
+    <TextView
+        android:id="@+id/reg1_tw4"
+        style="@style/reg_text_orange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:layoutDirection="rtl"
+        android:text="@string/reg1_text_line4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reg1_tw3"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/phone_num1"
+        style="@style/reg_text_green"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="3"
+        android:inputType="phone"
+        android:maxLength="3"
+        android:textAlignment="center"
+        android:textAppearance="@style/reg_text_orange"
+        android:textColor="@color/colorLightOrange"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/reg1_tw5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reg1_tw4"
+        app:layout_constraintVertical_bias="0.26" />
+
+    <EditText
+        android:id="@+id/phone_num2"
+        style="@style/reg_text_green"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:ems="7"
+        android:inputType="phone"
+        android:maxLength="7"
+        android:textAlignment="center"
+        android:textAppearance="@style/reg_text_orange"
+        android:textColor="@color/colorLightOrange"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/reg1_next_btn"
+        app:layout_constraintStart_toEndOf="@+id/reg1_tw5"
+        app:layout_constraintTop_toBottomOf="@+id/reg1_tw4"
+        app:layout_constraintVertical_bias="0.26" />
+
+    <TextView
+        android:id="@+id/reg1_tw5"
+        style="@style/reg_text_orange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hyphen"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/phone_num2"
+        app:layout_constraintStart_toEndOf="@+id/phone_num1"
+        app:layout_constraintTop_toBottomOf="@+id/reg1_tw4"
+        app:layout_constraintVertical_bias="0.26" />
+
+    <Button
+        android:id="@+id/reg1_next_btn"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/button_round_green_play"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/phone_num2"
+        app:layout_constraintTop_toBottomOf="@+id/reg1_tw4"
+        app:layout_constraintVertical_bias="0.26" />
+
+    <TextView
+        android:id="@+id/reg1_hint1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/prefix"
+        android:textAppearance="@style/reg_text_orange_small"
+        app:layout_constraintBottom_toTopOf="@+id/phone_num1"
+        app:layout_constraintEnd_toEndOf="@+id/phone_num1"
+        app:layout_constraintStart_toStartOf="@+id/phone_num1"
+        app:layout_constraintTop_toBottomOf="@+id/reg1_tw4"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/reg1_hint2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/phone_num"
+        android:textAppearance="@style/reg_text_orange_small"
+        app:layout_constraintBottom_toTopOf="@+id/phone_num2"
+        app:layout_constraintEnd_toEndOf="@+id/phone_num2"
+        app:layout_constraintStart_toStartOf="@+id/phone_num2"
+        app:layout_constraintTop_toBottomOf="@+id/reg1_tw4"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/reg1_stage1"
+        style="@style/reg_text_orange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/reg1_idx"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
 
 </android.support.constraint.ConstraintLayout>

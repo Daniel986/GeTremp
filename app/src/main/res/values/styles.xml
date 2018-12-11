@@ -8,4 +8,22 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="reg_text_orange" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorLightOrange</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="reg_text_orange_small" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorLightOrange</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="reg_text_green" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorMedGreen</item>
+        <item name="android:textSize">19sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

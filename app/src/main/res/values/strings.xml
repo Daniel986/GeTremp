@@ -1,5 +1,36 @@
 <resources>
     <string name="app_name">GeTremp</string>
+
+    <!--
+      Registration1 fragment strings
+      -->
     <string name="reg1_title">אמת את מספרך</string>
+
+    <string name="reg1_text_line1_1">אפליקציית </string>
+    <string name="reg1_text_line1_2"> GeTremp </string>
+    <string name="reg1_text_line1_3"> תשלח באופן חד פעמי</string>
+
+
+    <string name="reg1_text_line2">סמס על מנת לוודא מספר טלפון זה.</string>
+    <string name="reg1_text_line3">אנא הזן את מספר הטלפון שלך</string>
+    <string name="reg1_text_line4">כולל קידומת:</string>
+    <string name="hyphen">-</string>
+    <string name="prefix">קידומת</string>
+    <string name="phone_num">מספר</string>
+    <string name="reg1_idx">שלב 1/3</string>
+
+
+    <!--
+      Registration2 fragment strings
+      -->
+    <string name="reg2_title">וידוא SMS</string>
+
+    <string name="reg2_text_line1">אנא הזן את הסיסמה אשר נשלחה</string>
+    <string name="reg2_text_line2">אל מספרך.</string>
+
+    <string name="reg2_text_line3">במידה והסיסמה לא התקבלה</string>
+    <string name="reg2_text_line4">תוך זמן קצר, עבור אל שלב 1</string>
+
+    <string name="reg2_idx">שלב 2/3</string>
 
 </resources>
