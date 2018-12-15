@@ -40,8 +40,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
-        android:ems="10"
+        android:ems="6"
         android:inputType="number|numberSigned|numberDecimal"
+        android:maxLength="6"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,7 +51,7 @@
         app:layout_constraintVertical_bias="0.15" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/reg2_next_btn"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:background="@drawable/button_round_green_play"
@@ -59,4 +60,68 @@
         app:layout_constraintStart_toEndOf="@+id/reg2_pass"
         app:layout_constraintTop_toBottomOf="@+id/reg2_tw2"
         app:layout_constraintVertical_bias="0.15" />
+
+    <TextView
+        android:id="@+id/reg2_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reg2_timer_start"
+        android:textAlignment="center"
+        android:textColor="@color/colorMedOrange"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reg2_pass"
+        app:layout_constraintVertical_bias="0.19" />
+
+    <TextView
+        android:id="@+id/reg2_tw3"
+        style="@style/reg_text_green_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reg2_text_line3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reg2_timer"
+        app:layout_constraintVertical_bias="0.07999998" />
+
+    <TextView
+        android:id="@+id/reg2_tw"
+        style="@style/reg_text_green_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reg2_text_line4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reg2_tw3"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/reg2_stage2"
+        style="@style/reg_text_orange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/reg2_idx"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
+
+    <Button
+        android:id="@+id/reg2_back_btn"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@drawable/button_back_rounded"
+        app:layout_constraintBottom_toTopOf="@+id/reg2_stage2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reg2_tw"
+        app:layout_constraintVertical_bias="0.2" />
+
 </android.support.constraint.ConstraintLayout>

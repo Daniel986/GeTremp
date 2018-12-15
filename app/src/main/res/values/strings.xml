@@ -14,6 +14,7 @@
     <string name="reg1_text_line2">סמס על מנת לוודא מספר טלפון זה.</string>
     <string name="reg1_text_line3">אנא הזן את מספר הטלפון שלך</string>
     <string name="reg1_text_line4">כולל קידומת:</string>
+
     <string name="hyphen">-</string>
     <string name="prefix">קידומת</string>
     <string name="phone_num">מספר</string>
@@ -28,9 +29,34 @@
     <string name="reg2_text_line1">אנא הזן את הסיסמה אשר נשלחה</string>
     <string name="reg2_text_line2">אל מספרך.</string>
 
+    <string name="reg2_timer_start">5:00</string>
+
     <string name="reg2_text_line3">במידה והסיסמה לא התקבלה</string>
     <string name="reg2_text_line4">תוך זמן קצר, עבור אל שלב 1</string>
 
     <string name="reg2_idx">שלב 2/3</string>
+
+    <!--
+     Registration3 fragment strings
+     -->
+    <string name="reg3_title">פרטים אישיים</string>
+
+    <string name="reg3_text_line1">שלב אחרון ויוצאים לדרך!</string>
+    <string name="reg3_text_line2">אנא מלא את הפרטים הבאים:</string>
+
+    <string name="reg3_private_name">שם פרטי*</string>
+    <string name="reg3_surname_name">שם משפחה*</string>
+    <string name="reg3_email">דוא"ל*</string>
+    <string name="reg3_address">כתובת</string>
+    <string name="reg3_profile_picture">תמונת פרופיל:</string>
+    <string name="reg3_avatar_descriptor">Default Avatar Image</string>
+    <string name="reg3_avatar_mask_descriptor">Default Avatar Rounded Mask</string>
+
+
+    <string name="reg3_field_descriptor">*- שדה חובה</string>
+    <string name="reg3_field_length">0 / 50</string>
+
+    <string name="reg3_idx">שלב 3/3</string>
+
 
 </resources>

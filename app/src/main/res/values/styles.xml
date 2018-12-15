@@ -20,9 +20,21 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="reg_text_orange_med_small" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorLightOrange</item>
+        <item name="android:textSize">13sp</item>
+
+    </style>
+
     <style name="reg_text_green" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/colorMedGreen</item>
         <item name="android:textSize">19sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="reg_text_green_small" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorMedGreen</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
