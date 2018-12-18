@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.getremp.daniel_lael.getremp.R;
 import com.getremp.daniel_lael.getremp.RegistrationActivity;
@@ -53,6 +54,9 @@ public class Registration1Fragment extends Fragment {
                 {
                     activity.moveToFragmentTwo();
                 }
+//                else
+//                {
+//                }
                 // TODO else - let user know you didn't send auth
             }
         });

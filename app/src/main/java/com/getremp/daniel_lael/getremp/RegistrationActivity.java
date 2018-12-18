@@ -1,5 +1,6 @@
 package com.getremp.daniel_lael.getremp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -13,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.getremp.daniel_lael.getremp.ui.registration.Registration1Fragment;
 import com.getremp.daniel_lael.getremp.ui.registration.Registration2Fragment;
@@ -123,18 +125,26 @@ public class RegistrationActivity extends AppCompatActivity {
 
     public boolean SendVerificationCode(String phoneNumber) {
 
-        if(phoneNumber.isEmpty())
+        if(phoneNumber.isEmpty() || phoneNumber.length() != 10)
         {
+            final Activity t = this;
+            this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(t, "Please enter a valid phone number", Toast.LENGTH_LONG).show();
+                }
+            });
+            //Toast.makeText(this,"Please enter a valid phone number", Toast.LENGTH_SHORT);
             return false;
         }
-        phoneNumber = "+972"+phoneNumber;
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                phoneNumber,        // Phone number to verify
-                120,                 // Timeout duration
-                TimeUnit.SECONDS,   // Unit of timeout
-                this,               // Activity (for callback binding)
-                mCallbacks);        // OnVerificationStateChangedCallbacks
 
+        phoneNumber = getString(R.string.reg1_il_code) + phoneNumber.substring(1);
+        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                phoneNumber,            // Phone number to verify
+                120,                 // Timeout duration
+                TimeUnit.SECONDS,       // Unit of timeout
+                this,            // Activity (for callback binding)
+                mCallbacks);            // OnVerificationStateChangedCallbacks
         return true;
     }
 
@@ -163,6 +173,7 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
+        final Activity t = this;
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -172,15 +183,27 @@ public class RegistrationActivity extends AppCompatActivity {
                             Log.d("AUTH", "signInWithCredential:success");
                             //moveToFragmentThree();
                             FirebaseUser user = task.getResult().getUser();
-                            SharedPreferences.Editor editor = getSharedPreferences("preferenceName", MODE_PRIVATE).edit();
-                            user.getIdToken(false);
-                            editor.putString("key", "VAL");
-                            editor.commit();
+
+                            // TODO save user credentials to re-use with server
+                            //SharedPreferences.Editor editor = getSharedPreferences("preferenceName", MODE_PRIVATE).edit();
+                            //user.getIdToken(false);
+                            //editor.putString("key", "VAL");
+                            //editor.commit();
+                            reg2_frag.countDownTimer.cancel();
+
                             moveToFragmentThree();
                             // ...
                         } else {
                             // Sign in failed, display a message and update the UI
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(t, "Authentication failed.", Toast.LENGTH_LONG).show();
+                                }
+                            });
                             Log.w("AUTH", "signInWithCredential:failure", task.getException());
+                            //moveToFragmentOne();
+
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                                 // The verification code entered was invalid
                             }
