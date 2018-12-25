@@ -10,7 +10,7 @@
 
     <TextView
         android:id="@+id/reg2_tw1"
-        style="@style/reg_text_orange"
+        style="@style/reg_text_orange_large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -22,9 +22,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.20" />
 
+    <!--        android:style="@style/reg_text_orange_large"
+-->
     <TextView
         android:id="@+id/reg2_tw2"
-        style="@style/reg_text_orange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/reg2_text_line2"
@@ -102,7 +103,7 @@
 
     <TextView
         android:id="@+id/reg2_stage2"
-        style="@style/reg_text_orange"
+        style="@style/reg_text_orange_large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

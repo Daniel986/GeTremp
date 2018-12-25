@@ -58,7 +58,6 @@ public class RegistrationActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         mFragmentManager = getSupportFragmentManager();
-
         toolbar_title = (TextView) findViewById(R.id.toolbar_title);
 
 
@@ -69,9 +68,11 @@ public class RegistrationActivity extends AppCompatActivity {
             ft.commit();
         }
 
+        moveToFragmentThree();
+
 
     }
-//
+    //
 //
     public void moveToFragmentOne(){
 

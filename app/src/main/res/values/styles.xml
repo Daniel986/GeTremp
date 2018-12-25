@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="reg_text_orange" parent="TextAppearance.AppCompat">
+    <style name="reg_text_orange_large" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/colorLightOrange</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
@@ -36,6 +36,11 @@
         <item name="android:textColor">@color/colorMedGreen</item>
         <item name="android:textSize">15sp</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="gs_text_white" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">19sp</item>
     </style>
 
 </resources>

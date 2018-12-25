@@ -46,7 +46,7 @@
             <SearchView
                 android:id="@+id/searchView"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="42dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/layout_rounded_bg"
@@ -60,16 +60,54 @@
                 app:queryBackground="@color/colorWhite" />
 
             <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:id="@+id/gs_avatar_frame"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
                 app:layout_constraintBottom_toTopOf="@+id/searchView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/default_avatar_image" />
+
+            <TextView
+                android:id="@+id/gs_user_name"
+                style="@style/gs_text_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gs_user_name"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@+id/searchView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gs_avatar_frame"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/gs_user_address"
+                style="@style/gs_text_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gs_user_address"
+                android:textAlignment="center"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toTopOf="@+id/searchView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gs_user_name"
+                app:layout_constraintVertical_bias="0.0" />
         </android.support.constraint.ConstraintLayout>
     </FrameLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/gs_group_rv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gs_user_panel">
+
+    </android.support.v7.widget.RecyclerView>
 
 </android.support.constraint.ConstraintLayout>

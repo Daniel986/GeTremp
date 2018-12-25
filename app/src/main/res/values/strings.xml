@@ -64,7 +64,8 @@
  GroupSelection activity strings
  -->
     <string name="gs_title">בחר קבוצה</string>
-
+    <string name="gs_user_name">שם משתמש</string>
+    <string name="gs_user_address">כתובת</string>
 
 
 </resources>

@@ -10,7 +10,7 @@
 
     <TextView
         android:id="@+id/reg1_tw1"
-        style="@style/reg_text_orange"
+        style="@style/reg_text_orange_large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -27,7 +27,7 @@
 
     <TextView
         android:id="@+id/reg1_tw2"
-        style="@style/reg_text_orange"
+        style="@style/reg_text_orange_large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -43,7 +43,7 @@
 
     <TextView
         android:id="@+id/reg1_tw3"
-        style="@style/reg_text_orange"
+        style="@style/reg_text_orange_large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -59,7 +59,7 @@
 
     <TextView
         android:id="@+id/reg1_tw4"
-        style="@style/reg_text_orange"
+        style="@style/reg_text_orange_large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -82,7 +82,7 @@
         android:inputType="phone"
         android:maxLength="3"
         android:textAlignment="center"
-        android:textAppearance="@style/reg_text_orange"
+        android:textAppearance="@style/reg_text_orange_large"
         android:textColor="@color/colorLightOrange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/reg1_tw5"
@@ -100,7 +100,7 @@
         android:inputType="phone"
         android:maxLength="7"
         android:textAlignment="center"
-        android:textAppearance="@style/reg_text_orange"
+        android:textAppearance="@style/reg_text_orange_large"
         android:textColor="@color/colorLightOrange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/reg1_next_btn"
@@ -110,7 +110,7 @@
 
     <TextView
         android:id="@+id/reg1_tw5"
-        style="@style/reg_text_orange"
+        style="@style/reg_text_orange_large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hyphen"
@@ -158,7 +158,7 @@
 
     <TextView
         android:id="@+id/reg1_stage1"
-        style="@style/reg_text_orange"
+        style="@style/reg_text_orange_large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
