@@ -21,7 +21,8 @@
         android:layout_centerVertical="true"
         android:layout_toEndOf="@id/gs_li_image"
         android:layout_toStartOf="@id/gs_il_right_arrow"
-        android:text="TEST"/>
+        android:text="TEST"
+        android:textAppearance="@style/reg_text_orange_large"/>
 
     <ImageView
         android:id="@+id/gs_il_right_arrow"

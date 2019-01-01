@@ -1,31 +1,25 @@
-package com.getremp.daniel_lael.getremp.ui.registration;
+package com.getremp.daniel_lael.getremp.Registration.registration;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.text.Html;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.getremp.daniel_lael.getremp.R;
 import com.getremp.daniel_lael.getremp.RegistrationActivity;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.PhoneAuthProvider;
-
-import java.util.concurrent.TimeUnit;
 
 public class Registration1Fragment extends Fragment {
 
-    private RegistrationViewModel mViewModel;
     private EditText phoneNum1, phoneNum2;
 
 
@@ -45,6 +39,9 @@ public class Registration1Fragment extends Fragment {
 
         phoneNum1 = view.findViewById(R.id.reg1_phone_num1);
         phoneNum2 = view.findViewById(R.id.reg1_phone_num2);
+
+        phoneNum1.addTextChangedListener(mTextEditorWatcher1);
+
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,8 +65,6 @@ public class Registration1Fragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(RegistrationViewModel.class);
-        // TODO: Use the ViewModel
 
         // change color of "GeTrump" & construct the first line.
         TextView line1 = (TextView) getView().findViewById(R.id.reg1_tw1);
@@ -78,5 +73,21 @@ public class Registration1Fragment extends Fragment {
                 + "> " + getString(R.string.reg1_text_line1_2) + " </font>" + getString(R.string.reg1_text_line1_3)));
 
     }
+
+    private final TextWatcher mTextEditorWatcher1 = new TextWatcher() {
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+        }
+
+        public void afterTextChanged(Editable s) {
+            if(s.toString().length() == 3) {
+                phoneNum1.clearFocus();
+                phoneNum2.requestFocus();
+                phoneNum2.setCursorVisible(true);
+            }
+        }
+    };
 
 }

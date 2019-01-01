@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
-    tools:context=".ui.registration.Registration2Fragment">
+    tools:context=".Registration.registration.Registration2Fragment">
 
     <TextView
         android:id="@+id/reg2_tw1"
@@ -29,6 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/reg2_text_line2"
+        android:textAppearance="@style/reg_text_orange_large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"

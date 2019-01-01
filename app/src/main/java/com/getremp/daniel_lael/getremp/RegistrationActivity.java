@@ -1,9 +1,14 @@
 package com.getremp.daniel_lael.getremp;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
@@ -11,14 +16,15 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.getremp.daniel_lael.getremp.ui.registration.Registration1Fragment;
-import com.getremp.daniel_lael.getremp.ui.registration.Registration2Fragment;
-import com.getremp.daniel_lael.getremp.ui.registration.Registration3Fragment;
+import com.getremp.daniel_lael.getremp.Registration.registration.Registration1Fragment;
+import com.getremp.daniel_lael.getremp.Registration.registration.Registration2Fragment;
+import com.getremp.daniel_lael.getremp.Registration.registration.Registration3Fragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -29,10 +35,16 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.concurrent.TimeUnit;
 
 public class RegistrationActivity extends AppCompatActivity {
 
+    private static final String TAG = "RegistrationActivity";
     private static final int RESULT_LOAD_IMAGE = 1;
 
     FragmentManager mFragmentManager;
@@ -43,7 +55,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     TextView toolbar_title;
 
-    String codeSent;
+    String codeSent, phoneNum, avatar;
 
     FirebaseAuth mAuth;
 
@@ -52,13 +64,13 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration_activity);
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.registration1_toolbar);
+        Toolbar myToolbar = findViewById(R.id.registration1_toolbar);
         setSupportActionBar(myToolbar);
 
         mAuth = FirebaseAuth.getInstance();
 
         mFragmentManager = getSupportFragmentManager();
-        toolbar_title = (TextView) findViewById(R.id.toolbar_title);
+        toolbar_title = findViewById(R.id.toolbar_title);
 
 
         if (savedInstanceState == null) {
@@ -68,9 +80,7 @@ public class RegistrationActivity extends AppCompatActivity {
             ft.commit();
         }
 
-        moveToFragmentThree();
-
-
+        //moveToFragmentThree();
     }
     //
 //
@@ -113,21 +123,74 @@ public class RegistrationActivity extends AppCompatActivity {
         startActivityForResult(galleryIntent, RESULT_LOAD_IMAGE);
     }
 
+    public void moveToGroupSelect(String fName, String lName, String eMail, String address)
+    {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = preferences.edit();
+
+
+        Intent intent = new Intent(this, GroupSelectionActivity.class);
+
+        intent.putExtra("id", mAuth.getCurrentUser().getUid());
+        intent.putExtra("phone", phoneNum);
+        intent.putExtra("fName", fName);
+        intent.putExtra("lName", lName);
+        intent.putExtra("eMail", eMail);
+        intent.putExtra("address", address);
+
+        editor.putString("image", avatar);
+        editor.commit();
+
+        //intent.putExtra("avatar", avatar);
+
+        Log.d(TAG, "moveToGroupSelect: moving.");
+
+        Log.d(TAG, "moveToGroupSelect: extras: id: " +mAuth.getCurrentUser().getUid()+ ", phone: " + phoneNum + ", fname: " + fName + ", lname: " + lName + ", email: " + eMail + ", addr: " + address + ", avatar: " + avatar);
+
+        startActivity(intent);
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && data != null)
         {
-            Uri selectedImage = data.getData();
+            //Uri selectedImage = data.getData();
+            try {
+            final Uri imageUri = data.getData();
+            final InputStream imageStream = getContentResolver().openInputStream(imageUri);
+            final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
             ImageView im = (ImageView) findViewById(R.id.reg3_avatar_image);
-            im.setImageURI(selectedImage);
+            im.setImageURI(imageUri);
+
+            avatar = encodeImage(selectedImage);
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            //String encodedImage = encodeImage(selectedImage);
+            //avatar = encodeImage(getPath(this, data.getData()));
+            //ImageView im = (ImageView) findViewById(R.id.reg3_avatar_image);
+            //im.setImageURI(selectedImage);
         }
+    }
+
+    private String encodeImage(Bitmap bm)
+    {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.JPEG,100,baos);
+        byte[] b = baos.toByteArray();
+        String encImage = Base64.encodeToString(b, Base64.DEFAULT);
+
+        return encImage;
     }
 
     public boolean SendVerificationCode(String phoneNumber) {
 
         if(phoneNumber.isEmpty() || phoneNumber.length() != 10)
         {
+
             final Activity t = this;
             this.runOnUiThread(new Runnable() {
                 @Override
@@ -139,6 +202,9 @@ public class RegistrationActivity extends AppCompatActivity {
             return false;
         }
 
+        this.phoneNum = phoneNumber;
+
+
         phoneNumber = getString(R.string.reg1_il_code) + phoneNumber.substring(1);
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 phoneNumber,            // Phone number to verify
@@ -148,7 +214,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 mCallbacks);            // OnVerificationStateChangedCallbacks
         return true;
     }
-
 
     PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         @Override
@@ -186,10 +251,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             FirebaseUser user = task.getResult().getUser();
 
                             // TODO save user credentials to re-use with server
-                            //SharedPreferences.Editor editor = getSharedPreferences("preferenceName", MODE_PRIVATE).edit();
-                            //user.getIdToken(false);
-                            //editor.putString("key", "VAL");
-                            //editor.commit();
+
                             reg2_frag.countDownTimer.cancel();
 
                             moveToFragmentThree();

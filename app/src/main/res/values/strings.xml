@@ -2,6 +2,13 @@
     <string name="app_name">GeTremp</string>
 
     <!--
+  Loading strings
+  -->
+
+    <string name="loading_str">טוען</string>
+
+
+    <!--
       Registration1 fragment strings
       -->
     <string name="reg1_title">אמת את מספרך</string>

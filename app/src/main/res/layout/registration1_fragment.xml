@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
-    tools:context=".ui.registration.Registration1Fragment">
+    tools:context=".Registration.registration.Registration1Fragment">
 
     <TextView
         android:id="@+id/reg1_tw1"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.registration.Registration3Fragment">
+    tools:context=".Registration.registration.Registration3Fragment">
 
     <TextView
         android:id="@+id/reg3_tw1"
@@ -233,4 +233,56 @@
         app:layout_constraintVertical_bias="0.120000005">
 
     </FrameLayout>
+
+    <TextView
+        android:id="@+id/reg3_name_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reg3_field_length"
+        android:textAppearance="@style/reg_text_grey_small"
+        app:layout_constraintBottom_toTopOf="@+id/reg3_surname"
+        app:layout_constraintEnd_toEndOf="@+id/reg3_name"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/reg3_name"
+        app:layout_constraintTop_toBottomOf="@+id/reg3_name"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/reg3_surname_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reg3_field_length"
+        android:textAppearance="@style/reg_text_grey_small"
+        app:layout_constraintBottom_toTopOf="@+id/reg3_email"
+        app:layout_constraintEnd_toEndOf="@+id/reg3_surname"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/reg3_surname"
+        app:layout_constraintTop_toBottomOf="@+id/reg3_surname"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/reg3_email_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reg3_field_length"
+        android:textAppearance="@style/reg_text_grey_small"
+        app:layout_constraintBottom_toTopOf="@+id/reg3_address"
+        app:layout_constraintEnd_toEndOf="@+id/reg3_email"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/reg3_email"
+        app:layout_constraintTop_toBottomOf="@+id/reg3_email"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/reg3_address_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reg3_field_length"
+        android:textAppearance="@style/reg_text_grey_small"
+        app:layout_constraintBottom_toTopOf="@+id/reg3_next_btn"
+        app:layout_constraintEnd_toEndOf="@+id/reg3_address"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/reg3_address"
+        app:layout_constraintTop_toBottomOf="@+id/reg3_address"
+        app:layout_constraintVertical_bias="0.0" />
 </android.support.constraint.ConstraintLayout>

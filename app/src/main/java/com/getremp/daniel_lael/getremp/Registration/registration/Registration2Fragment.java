@@ -1,6 +1,5 @@
-package com.getremp.daniel_lael.getremp.ui.registration;
+package com.getremp.daniel_lael.getremp.Registration.registration;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
@@ -21,7 +20,6 @@ import java.util.concurrent.TimeUnit;
 
 public class Registration2Fragment extends Fragment {
 
-    private RegistrationViewModel mViewModel;
 
     TextView timer;
     EditText pass;
@@ -110,9 +108,6 @@ public class Registration2Fragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(RegistrationViewModel.class);
-        // TODO: Use the ViewModel
-
 
     }
 
