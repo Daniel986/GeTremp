@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.getremp.daniel_lael.getremp.R;
 import com.getremp.daniel_lael.getremp.RegistrationActivity;
@@ -40,7 +41,7 @@ public class Registration1Fragment extends Fragment {
         phoneNum1 = view.findViewById(R.id.reg1_phone_num1);
         phoneNum2 = view.findViewById(R.id.reg1_phone_num2);
 
-        phoneNum1.addTextChangedListener(mTextEditorWatcher1);
+        phoneNum1.addTextChangedListener(mTextEditorWatcher);
 
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -51,10 +52,6 @@ public class Registration1Fragment extends Fragment {
                 {
                     activity.moveToFragmentTwo();
                 }
-//                else
-//                {
-//                }
-                // TODO else - let user know you didn't send auth
             }
         });
 
@@ -74,7 +71,7 @@ public class Registration1Fragment extends Fragment {
 
     }
 
-    private final TextWatcher mTextEditorWatcher1 = new TextWatcher() {
+    private final TextWatcher mTextEditorWatcher = new TextWatcher() {
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
         }
 

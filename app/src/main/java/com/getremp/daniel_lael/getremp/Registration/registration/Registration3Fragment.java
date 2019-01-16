@@ -11,20 +11,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.getremp.daniel_lael.getremp.R;
 import com.getremp.daniel_lael.getremp.RegistrationActivity;
 
 
-public class Registration3Fragment extends Fragment implements View.OnClickListener {
-//    // TODO: Rename parameter arguments, choose names that match
-//    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-//    private static final String ARG_PARAM1 = "param1";
-//    private static final String ARG_PARAM2 = "param2";
-//
-//    // TODO: Rename and change types of parameters
-//    private String mParam1;
-//    private String mParam2;
+public class Registration3Fragment extends Fragment  {
 
     RegistrationActivity activity;
     EditText fName, lName, eMail, address;
@@ -70,11 +63,6 @@ public class Registration3Fragment extends Fragment implements View.OnClickListe
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //TODO connect listener to textEdit fields
-        //mEditText.addTextChangedListener(mTextEditorWatcher1);
-
-
     }
 
     @Override
@@ -124,6 +112,9 @@ public class Registration3Fragment extends Fragment implements View.OnClickListe
                     RegistrationActivity activity = (RegistrationActivity) getActivity();
                     activity.moveToGroupSelect(fName.getText().toString(), lName.getText().toString(), eMail.getText().toString(), address.getText().toString());
                 }
+                else {
+                    Toast.makeText(getActivity(), "אנא מלא את כל שדות החובה", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         // Inflate the layout for this fragment
@@ -145,7 +136,7 @@ public class Registration3Fragment extends Fragment implements View.OnClickListe
         }
         else
         {
-            if(text.length() >= 1)
+            if(text.length() >= 2)
             {
                 return true;
             }
@@ -154,20 +145,20 @@ public class Registration3Fragment extends Fragment implements View.OnClickListe
     }
 
 
-    @Override
-    public void onClick(View v) {
-        activity = (RegistrationActivity)getActivity();
-        switch(v.getId())
-        {
-            case R.id.reg3_avatar_image :
-            {
-                activity.UploadAvatarImage();
-                break;
-            }
-            case R.id.reg3_next_btn :
-            {
-                break;
-            }
-        }
-    }
+//    @Override
+//    public void onClick(View v) {
+//        activity = (RegistrationActivity)getActivity();
+//        switch(v.getId())
+//        {
+//            case R.id.reg3_avatar_image :
+//            {
+//                activity.UploadAvatarImage();
+//                break;
+//            }
+//            case R.id.reg3_next_btn :
+//            {
+//                break;
+//            }
+//        }
+//    }
 }

@@ -117,7 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
-        android:src="@android:drawable/ic_input_add"
+        android:src="@drawable/baseline_add_white_trans_48"
         app:backgroundTint="@color/colorMedGreen"
         app:elevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -80,8 +80,6 @@ public class Registration2Fragment extends Fragment {
                             Toast.makeText(activity, "אנא הזן סיסמה בת 6 ספרות.", Toast.LENGTH_LONG).show();
                         }
                     });
-                    //Toast.makeText(getActivity(), "אנא הזן סיסמה בת 6 ספרות.", Toast.LENGTH_SHORT);
-                    // TODO tell the user that his code is not bueno. suggest resending..
                 }
 
             }

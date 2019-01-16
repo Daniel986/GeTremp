@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:bottom="7dp"
+    android:left="7dp"
+    android:right="7dp"
+    android:top="7dp">
+
+    <!-- Insert your shape here: -->
+    <shape>
+        <solid android:color="@color/colorLightGrey"/>
+        <stroke android:width="3dp" android:color="@color/colorLightOrange" />
+        <corners android:radius="10dp"/>
+    </shape>
+
+</item>
+</layer-list>

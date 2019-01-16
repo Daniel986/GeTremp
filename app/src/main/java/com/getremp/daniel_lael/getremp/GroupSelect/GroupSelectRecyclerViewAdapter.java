@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.getremp.daniel_lael.getremp.GroupSelectionActivity;
 import com.getremp.daniel_lael.getremp.R;
-import com.getremp.daniel_lael.getremp.RegistrationActivity;
 
 import java.util.ArrayList;
 
@@ -56,7 +55,8 @@ public class GroupSelectRecyclerViewAdapter extends RecyclerView.Adapter<GroupSe
                 public void onClick(View v) {
 
                     GroupSelectionActivity groupSelectionActivity = (GroupSelectionActivity)context;
-                    groupSelectionActivity.sendUserToServer(gsImageNames.get(position));
+                    groupSelectionActivity.moveToTrempSelect(gsImageNames.get(position));
+                    // TODO : request group's routine tremps
 
                     Log.d(TAG, "onClick: clicked on " + gsImageNames.get(position));
                     Toast.makeText(context, "Clicked on " + gsImageNames.get(position), Toast.LENGTH_SHORT).show();

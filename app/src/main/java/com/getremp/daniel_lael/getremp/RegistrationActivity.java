@@ -2,6 +2,7 @@ package com.getremp.daniel_lael.getremp;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -13,6 +14,7 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -22,6 +24,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.getremp.daniel_lael.getremp.Registration.registration.Registration1Fragment;
 import com.getremp.daniel_lael.getremp.Registration.registration.Registration2Fragment;
 import com.getremp.daniel_lael.getremp.Registration.registration.Registration3Fragment;
@@ -35,11 +42,15 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 public class RegistrationActivity extends AppCompatActivity {
@@ -59,6 +70,9 @@ public class RegistrationActivity extends AppCompatActivity {
 
     FirebaseAuth mAuth;
 
+
+    final Activity t = this;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +87,8 @@ public class RegistrationActivity extends AppCompatActivity {
         toolbar_title = findViewById(R.id.toolbar_title);
 
 
+
+
         if (savedInstanceState == null) {
             reg1_frag = new Registration1Fragment();
             FragmentTransaction ft = mFragmentManager.beginTransaction();
@@ -81,9 +97,10 @@ public class RegistrationActivity extends AppCompatActivity {
         }
 
         //moveToFragmentThree();
+
     }
-    //
-//
+
+
     public void moveToFragmentOne(){
 
         if (reg1_frag == null){
@@ -132,22 +149,61 @@ public class RegistrationActivity extends AppCompatActivity {
         Intent intent = new Intent(this, GroupSelectionActivity.class);
 
         intent.putExtra("id", mAuth.getCurrentUser().getUid());
-        intent.putExtra("phone", phoneNum);
+//        intent.putExtra("phone", phoneNum);
         intent.putExtra("fName", fName);
         intent.putExtra("lName", lName);
-        intent.putExtra("eMail", eMail);
+//        intent.putExtra("eMail", eMail);
         intent.putExtra("address", address);
 
         editor.putString("image", avatar);
         editor.commit();
 
-        //intent.putExtra("avatar", avatar);
+        sendUserToServer(intent, fName, lName, eMail, address);
 
-        Log.d(TAG, "moveToGroupSelect: moving.");
+    }
 
-        Log.d(TAG, "moveToGroupSelect: extras: id: " +mAuth.getCurrentUser().getUid()+ ", phone: " + phoneNum + ", fname: " + fName + ", lname: " + lName + ", email: " + eMail + ", addr: " + address + ", avatar: " + avatar);
+    public void sendUserToServer(final Intent intent, String fName, String lName, String eMail, String address) {
 
-        startActivity(intent);
+
+        HashMap<String, String> params = new HashMap<>();
+        Log.d(TAG, "sendUserToServer: sending");
+
+        //id, fName, lName, eMail, address, avatar;
+        params.put("id", mAuth.getCurrentUser().getUid()); // the entered data as the body.
+        params.put("phoneNumber", phoneNum); // the entered data as the body.
+        params.put("firstName", lName); // the entered data as the body.
+        params.put("lastName", fName); // the entered data as the body.
+        params.put("email", eMail); // the entered data as the body.
+        params.put("address", address); // the entered data as the body.
+
+        // TODO: return when capacity enlarged
+        //params.put("image", avatar); // the entered data as the body.
+
+        params.put("image", "no image");
+        params.put("groups", "");
+
+        Log.d(TAG, "JSON: " + new JSONObject(params));
+
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.POST, ServerRequest.url+"/register", new JSONObject(params), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d(TAG, "onResponse: success. got response.");
+//                    Log.d(TAG, "onResponse: " + response.getString("message"));
+                startActivity(intent);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Log.d(TAG, "onResponse: ERROR RESPONSE");
+            }
+
+        });
+
+
+        Log.d(TAG, "adding to Q: " + jsObjRequest.getBody().toString());
+        ServerRequest.getInstance(this).addToRequestQueue(jsObjRequest);
+        Log.d(TAG, "Added");
     }
 
     @Override
@@ -169,10 +225,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            //String encodedImage = encodeImage(selectedImage);
-            //avatar = encodeImage(getPath(this, data.getData()));
-            //ImageView im = (ImageView) findViewById(R.id.reg3_avatar_image);
-            //im.setImageURI(selectedImage);
         }
     }
 
@@ -190,15 +242,12 @@ public class RegistrationActivity extends AppCompatActivity {
 
         if(phoneNumber.isEmpty() || phoneNumber.length() != 10)
         {
-
-            final Activity t = this;
             this.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     Toast.makeText(t, "Please enter a valid phone number", Toast.LENGTH_LONG).show();
                 }
             });
-            //Toast.makeText(this,"Please enter a valid phone number", Toast.LENGTH_SHORT);
             return false;
         }
 
@@ -224,6 +273,12 @@ public class RegistrationActivity extends AppCompatActivity {
         @Override
         public void onVerificationFailed(FirebaseException e) {
 
+            t.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(t, "Oops, something in the verification went wrong.. please try again later.", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
         @Override
@@ -273,6 +328,20 @@ public class RegistrationActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setMessage(getString(R.string.gs_back_text))
+                .setNegativeButton(getString(R.string.gs_back_stay), null)
+                .setPositiveButton(getString(R.string.gs_back_out), new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        // GroupSelectionActivity.super.onBackPressed();
+                        finishAffinity();
+                    }
+                }).create().show();
     }
 
 }

@@ -61,7 +61,7 @@
     <string name="reg3_avatar_mask_descriptor">Default Avatar Rounded Mask</string>
 
 
-    <string name="reg3_field_descriptor">*- שדה חובה</string>
+    <string name="reg3_field_descriptor">*- שדה חובה(לפחות שני תווים בשדה)</string>
     <string name="reg3_field_length">0 / 50</string>
 
     <string name="reg3_idx">שלב 3/3</string>
@@ -73,6 +73,32 @@
     <string name="gs_title">בחר קבוצה</string>
     <string name="gs_user_name">שם משתמש</string>
     <string name="gs_user_address">כתובת</string>
+
+    <string name="gs_diag_header_tv">יצירת קבוצה</string>
+    <string name="gs_diag_text">שם קבוצה</string>
+    <string name="gs_diag_confirm">צור קבוצה</string>
+    <string name="gs_diag_exit">בטל</string>
+
+    <string name="gs_back_text">האם אתה בטוח שברצונך לצאת?</string>
+    <string name="gs_back_out">צא</string>
+    <string name="gs_back_stay">לא</string>
+
+    <!--
+TrempSelection activity strings
+-->
+    <string name="ts_driver_name">פותח הנסיעה</string>
+    <string name="ts_seats">נוסעים:</string>
+    <string name="ts_num_of_seats">0/5</string>
+    <string name="ts_dest">יעד</string>
+    <string name="ts_origin">מוצא</string>
+    <string name="ts_day">יום</string>
+    <string name="ts_hour">00:00</string>
+
+    <string name="ts_regular_btn">קבועות</string>
+    <string name="ts_temp_btn">ארעיות</string>
+
+    <string name="ts_add_tremp">פתיחת נסיעה</string>
+    <string name="ts_group_name">שם קבוצה</string>
 
 
 </resources>
